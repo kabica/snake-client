@@ -4,7 +4,7 @@ const stdin = process.stdin;
 
 const connect = function() {
   const conn = net.createConnection({ 
-    host: 'localhost',
+    host: '192.168.168.76',
     port: 3000
     //192.168.168.76
     //10.0.2.15
@@ -16,9 +16,14 @@ const connect = function() {
     stdin.setEncoding('utf8');
     conn.setEncoding('utf8'); 
     console.log('Successfully connected to game server!');
-    conn.write("Name: ALX")
+    conn.write("Name: ALX");
+    //conn.write("Move: up");
+    
+
   });
 
+
+  
    // DATA - from server
    conn.on('data', (data) => {
     console.log('Server says: ' , data);
