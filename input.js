@@ -17,6 +17,21 @@ const handleUserInput = (key) => {
 	if(key === 'd') {
 		connection.write('Move: right');
 	}
+
+	if(key === 'z') {
+		connection.write('Say: SNEK');
+	}
+	if(key === 'x') {
+		connection.write('Say: ATTAK!');
+	}
+
+	// const say = key.match(/Say: (.*)/);
+	// if(say) {
+	// 	connection.write(say[1].trim().substring(0));
+	// }
+
+
+
 }
 
 const setupInput = function(conn) {
