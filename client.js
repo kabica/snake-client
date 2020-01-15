@@ -29,9 +29,10 @@ const connect = function() {
     console.log('Server says: ' , data);
   });
 
-   stdin.on('data', (data) => {
-    conn.write(data);
-  });
+  //  stdin.on('data', (data) => {
+    
+  //   conn.write(data);
+  // });
 
 
 
