@@ -1,21 +1,37 @@
 const net = require('net');
+const stdin = process.stdin;
+
+
 const connect = function() {
   const conn = net.createConnection({ 
     host: 'localhost',
-    port: 3000 //50541
+    port: 3000
     //192.168.168.76
     //10.0.2.15
   });
 
-  conn.on('data', (data) => {
-  	console.log('Server says: ' , data);
+  // CONNECTION STATUS - to server
+  conn.on('connect', () => {
+    conn.write('Hello from client!');
+    stdin.setEncoding('utf8');
+    conn.setEncoding('utf8'); 
+    console.log('Successfully connected to game server!');
+    conn.write("Name: ALX")
   });
 
-  conn.on('connect', () => {
-  conn.write('Hello from client!');
-});
-  // interpret incoming data as text
-  conn.setEncoding('utf8'); 
+   // DATA - from server
+   conn.on('data', (data) => {
+    console.log('Server says: ' , data);
+  });
+
+   stdin.on('data', (data) => {
+    conn.write(data);
+  });
+
+
+
+  
+  
 
   return conn;
 }
